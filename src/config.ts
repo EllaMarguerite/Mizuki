@@ -15,7 +15,7 @@ import type {
 	SiteConfig,
 } from "./types/config";
 import { LinkPreset } from "./types/config";
-import * as siteMeta from "./data/siteConfig.yml";
+import siteMeta from "./data/siteConfig";
 
 // 移除i18n导入以避免循环依赖
 
