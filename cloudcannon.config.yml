@@ -13,7 +13,7 @@ collections_config:
   posts:
     path: src/content/posts
     icon: event_available
-    url: '[full_slug]/'
+    url: /[collection]/[slug]/
     disable_url: false
     disable_add: false
     disable_add_folder: false
@@ -25,6 +25,21 @@ collections_config:
     disable_add: false
     disable_add_folder: false
     disable_file_actions: false
+_inputs:
+  $.title:
+    type: text
+    options:
+      required: true
+    cascade: true
+  $.published:
+    type: datetime
+    cascade: true
+  $.description:
+    type: textarea
+    options:
+      show_count: true
+      required: true
+    cascade: true
 timezone: Pacific/Auckland
 markdown:
   engine: commonmark
