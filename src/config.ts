@@ -15,28 +15,14 @@ import type {
 	SiteConfig,
 } from "./types/config";
 import { LinkPreset } from "./types/config";
-import yaml from "js-yaml";
-import { readFileSync } from "fs";
-import { fileURLToPath } from "url";
-import { dirname, join } from "path";
+import { loadSiteDetails } from "./utils/loadConfig";
 
-// Get the directory of the current file
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+// Load site details from YAML file
+const siteDetails = loadSiteDetails();
 
 // Define site language
 const SITE_LANG = "en";
 const SITE_TIMEZONE = 12; //Set your website's timezone from -12 to 12 (default in UTC+8)
-
-// Load site details from YAML file
-const siteDetailsPath = join(__dirname, "data/sitedetails.yml");
-const siteDetailsContent = readFileSync(siteDetailsPath, "utf-8");
-const siteDetails = yaml.load(siteDetailsContent) as {
-	title: string;
-	subtitle: string;
-	siteURL: string;
-	siteStartDate: string;
-};
 
 export const siteConfig: SiteConfig = {
 	title: siteDetails.title,
