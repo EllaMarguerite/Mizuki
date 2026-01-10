@@ -2,6 +2,7 @@ import yaml from "js-yaml";
 // Import the YAML file as a raw string so this module is Vite/browser-safe
 import siteDetailsRaw from "../data/sitedetails.yml?raw";
 import bannerRaw from "../data/banner.yml?raw";
+import themeRaw from "../data/theme.yml?raw";
 
 export function loadSiteDetails() {
 	const siteDetailsContent = siteDetailsRaw as string;
@@ -10,6 +11,37 @@ export function loadSiteDetails() {
 		subtitle: string;
 		siteURL: string;
 		siteStartDate: string;
+	};
+}
+
+export function loadTheme() {
+	const content = themeRaw as string;
+	const parsed = yaml.load(content) as any;
+
+	const theme = parsed?.themeColor;
+	if (!theme) {
+		throw new Error(
+			"src/data/theme.yml must contain a 'themeColor' section with 'hue' and 'fixed'.",
+		);
+	}
+	const hue = theme.hue;
+	const fixed = theme.fixed;
+	if (typeof hue !== "number" || hue < 0 || hue > 360) {
+		throw new Error(
+			"src/data/theme.yml: 'themeColor.hue' is required and must be a number between 0 and 360.",
+		);
+	}
+	if (typeof fixed !== "boolean") {
+		throw new Error(
+			"src/data/theme.yml: 'themeColor.fixed' is required and must be a boolean.",
+		);
+	}
+
+	return parsed as {
+		themeColor: {
+			hue: number;
+			fixed: boolean;
+		};
 	};
 }
 

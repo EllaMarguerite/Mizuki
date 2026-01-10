@@ -15,7 +15,7 @@ import type {
 	SiteConfig,
 } from "./types/config";
 import { LinkPreset } from "./types/config";
-import { loadSiteDetails, loadBanner } from "./utils/loadConfig";
+import { loadSiteDetails, loadBanner, loadTheme } from "./utils/loadConfig";
 
 // Load site details from YAML file
 const siteDetails = loadSiteDetails();
@@ -34,10 +34,8 @@ export const siteConfig: SiteConfig = {
 
 	lang: SITE_LANG,
 
-	themeColor: {
-		hue: 230, // The default hue of the theme color, ranging from 0 to 360. For example: Red: 0, Cyan: 200, Blue-green: 250, Pink: 345
-		fixed: false, // 对访问者隐藏主题色选择器
-	},
+	// themeColor must come from YAML only (no hardcoded defaults)
+	themeColor: loadTheme().themeColor,
 
 	// 特色页面开关配置(关闭不在使用的页面有助于提升SEO,关闭后直接在顶部导航删除对应的页面就行)
 	featurePages: {
@@ -139,7 +137,7 @@ export const siteConfig: SiteConfig = {
 		// 项目地址:https://github.com/matsuzaka-yuki/PicFlow-API
 		// 请自行搭建API
 
-		// banner.homeText must come from YAML (no hardcoded defaults)
+		// banner.homeText comes from YAML in the data folder
 		homeText: loadBanner().homeText,
 
 		credit: {
