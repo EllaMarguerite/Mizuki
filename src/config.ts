@@ -15,27 +15,26 @@ import type {
 	SiteConfig,
 } from "./types/config";
 import { LinkPreset } from "./types/config";
-import { loadSiteDetails, loadBanner, loadTheme } from "./utils/loadConfig";
 
-// Load site details from YAML file
-const siteDetails = loadSiteDetails();
+// 移除i18n导入以避免循环依赖
 
-// Define site language
-const SITE_LANG = "en";
-const SITE_TIMEZONE = 12; //Set your website's timezone from -12 to 12 (default in UTC+8)
-
+// 定义站点语言
+const SITE_LANG = "en"; // 语言代码，例如：'en', 'zh_CN', 'ja' 等。
+const SITE_TIMEZONE = 8; //设置你的网站时区 from -12 to 12 default in UTC+8
 export const siteConfig: SiteConfig = {
-	title: siteDetails.title,
-	subtitle: siteDetails.subtitle,
-	siteURL: siteDetails.siteURL,
-	siteStartDate: siteDetails.siteStartDate, // The date the site started running, used by the site statistics component to calculate the number of days it has been running.
+	title: "Mizuki",
+	subtitle: "One demo website",
+	siteURL: "https://mizuki.mysqil.com/", // 请替换为你的站点URL，以斜杠结尾
+	siteStartDate: "2025-01-01", // 站点开始运行日期，用于站点统计组件计算运行天数
 
 	timeZone: SITE_TIMEZONE,
 
 	lang: SITE_LANG,
 
-	// themeColor must come from YAML only (no hardcoded defaults)
-	themeColor: loadTheme().themeColor,
+	themeColor: {
+		hue: 230, // 主题色的默认色相，范围从 0 到 360。例如：红色：0，青色：200，蓝绿色：250，粉色：345
+		fixed: false, // 对访问者隐藏主题色选择器
+	},
 
 	// 特色页面开关配置(关闭不在使用的页面有助于提升SEO,关闭后直接在顶部导航删除对应的页面就行)
 	featurePages: {
@@ -137,8 +136,25 @@ export const siteConfig: SiteConfig = {
 		// 项目地址:https://github.com/matsuzaka-yuki/PicFlow-API
 		// 请自行搭建API
 
-		// banner.homeText comes from YAML in the data folder
-		homeText: loadBanner().homeText,
+		homeText: {
+			enable: true, // 在主页显示自定义文本
+			title: "美しいミズキ", // 主页横幅主标题
+
+			subtitle: [
+				"特別なことはないけど、君がいると十分です",
+				"今でもあなたは私の光",
+				"君ってさ、知らないうちに私の毎日になってたよ",
+				"君と話すと、なんか毎日がちょっと楽しくなるんだ",
+				"今日はなんでもない日。でも、ちょっとだけいい日",
+			],
+			typewriter: {
+				enable: true, // 启用副标题打字机效果
+
+				speed: 100, // 打字速度（毫秒）
+				deleteSpeed: 50, // 删除速度（毫秒）
+				pauseTime: 2000, // 完全显示后的暂停时间（毫秒）
+			},
+		},
 
 		credit: {
 			enable: false, // 显示横幅图片来源文本
@@ -320,12 +336,12 @@ export const navBarConfig: NavBarConfig = {
 };
 
 export const profileConfig: ProfileConfig = {
-	avatar: "assets/images/avatar.webp", // Relative to the /src directory. If it starts with '/', it is relative to the /public directory.
+	avatar: "assets/images/avatar.webp", // 相对于 /src 目录。如果以 '/' 开头，则相对于 /public 目录
 	name: "Matsuzaka Yuki",
 	bio: "The world is big, you have to go and see",
 	typewriter: {
-		enable: false, // Enable the personal profile typewriter effect
-		speed: 80, // Typing speed (milliseconds)
+		enable: true, // 启用个人简介打字机效果
+		speed: 80, // 打字速度（毫秒）
 	},
 	links: [
 		{
@@ -592,7 +608,7 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 };
 
 export const sakuraConfig: SakuraConfig = {
-	enable: true, // 默认关闭樱花特效
+	enable: false, // 默认关闭樱花特效
 	sakuraNum: 21, // 樱花数量
 	limitTimes: -1, // 樱花越界限制次数，-1为无限循环
 	size: {
@@ -618,6 +634,30 @@ export const sakuraConfig: SakuraConfig = {
 	zIndex: 100, // 层级，确保樱花在合适的层级显示
 };
 
+// Pio 看板娘配置
+export const pioConfig: import("./types/config").PioConfig = {
+	enable: true, // 启用看板娘
+	models: ["/pio/models/pio/model.json"], // 默认模型路径
+	position: "left", // 默认位置在右侧
+	width: 280, // 默认宽度
+	height: 250, // 默认高度
+	mode: "draggable", // 默认为可拖拽模式
+	hiddenOnMobile: true, // 默认在移动设备上隐藏
+	dialog: {
+		welcome: "Welcome to Mizuki Website!", // 欢迎词
+		touch: [
+			"What are you doing?",
+			"Stop touching me!",
+			"HENTAI!",
+			"Don't bully me like that!",
+		], // 触摸提示
+		home: "Click here to go back to homepage!", // 首页提示
+		skin: ["Want to see my new outfit?", "The new outfit looks great~"], // 换装提示
+		close: "QWQ See you next time~", // 关闭提示
+		link: "https://github.com/matsuzaka-yuki/Mizuki", // 关于链接
+	},
+};
+
 // 导出所有配置的统一接口
 export const widgetConfigs = {
 	profile: profileConfig,
@@ -626,6 +666,7 @@ export const widgetConfigs = {
 	layout: sidebarLayoutConfig,
 	sakura: sakuraConfig,
 	fullscreenWallpaper: fullscreenWallpaperConfig,
+	pio: pioConfig, // 添加 pio 配置
 	share: shareConfig, // 添加分享配置
 } as const;
 
