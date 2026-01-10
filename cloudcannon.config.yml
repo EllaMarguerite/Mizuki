@@ -32,6 +32,28 @@ collections_config:
     disable_add: false
     disable_add_folder: false
     disable_file_actions: false
+  data:
+    path: src/data
+    icon: data_usage
+    disable_url: true
+    preview:
+    _inputs:
+      $.title:
+        comment: The title of this website in the browser tab.
+        cascade: true
+      $.subtitle:
+        comment: >-
+          The subtitle of this website in the browser tab. This will suffix the
+          title using a hyphen.
+        cascade: true
+      $.siteStartDate:
+        comment: >-
+          The date the site started running, used by the site statistics
+          component to calculate the number of days it has been running.
+        cascade: true
+    disable_add: false
+    disable_add_folder: false
+    disable_file_actions: false
 _inputs:
   $.title:
     type: text
@@ -59,8 +81,7 @@ _inputs:
     cascade: true
   $.password:
     type: text
-    options:
-      hidden: $.encrypted
+    options: {}
     cascade: true
 timezone: Pacific/Auckland
 markdown:
