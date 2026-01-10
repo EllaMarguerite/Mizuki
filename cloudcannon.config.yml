@@ -51,6 +51,11 @@ collections_config:
           The date the site started running, used by the site statistics
           component to calculate the number of days it has been running.
         cascade: true
+      $.themeColor.hue:
+        comment: >-
+          The default hue of the theme color, ranging from 0 to 360. For
+          example: Red: 0, Cyan: 200, Blue-green: 250, Pink: 345
+        cascade: true
     disable_add: false
     disable_add_folder: false
     disable_file_actions: false
