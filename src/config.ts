@@ -15,7 +15,7 @@ import type {
 	SiteConfig,
 } from "./types/config";
 import { LinkPreset } from "./types/config";
-import { loadSiteDetails } from "./utils/loadConfig";
+import { loadSiteDetails, loadBanner } from "./utils/loadConfig";
 
 // Load site details from YAML file
 const siteDetails = loadSiteDetails();
@@ -139,25 +139,8 @@ export const siteConfig: SiteConfig = {
 		// 项目地址:https://github.com/matsuzaka-yuki/PicFlow-API
 		// 请自行搭建API
 
-		homeText: {
-			enable: true, // 在主页显示自定义文本
-			title: "美しいミズキ", // 主页横幅主标题
-
-			subtitle: [
-				"特別なことはないけど、君がいると十分です",
-				"今でもあなたは私の光",
-				"君ってさ、知らないうちに私の毎日になってたよ",
-				"君と話すと、なんか毎日がちょっと楽しくなるんだ",
-				"今日はなんでもない日。でも、ちょっとだけいい日",
-			],
-			typewriter: {
-				enable: true, // 启用副标题打字机效果
-
-				speed: 100, // 打字速度（毫秒）
-				deleteSpeed: 50, // 删除速度（毫秒）
-				pauseTime: 2000, // 完全显示后的暂停时间（毫秒）
-			},
-		},
+		// banner.homeText must come from YAML (no hardcoded defaults)
+		homeText: loadBanner().homeText,
 
 		credit: {
 			enable: false, // 显示横幅图片来源文本
