@@ -15,6 +15,7 @@ import type {
 	SiteConfig,
 } from "./types/config";
 import { LinkPreset } from "./types/config";
+import siteMeta from "./data/siteConfig.yml";
 
 // 移除i18n导入以避免循环依赖
 
@@ -22,10 +23,11 @@ import { LinkPreset } from "./types/config";
 const SITE_LANG = "en"; // 语言代码，例如：'en', 'zh_CN', 'ja' 等。
 const SITE_TIMEZONE = 8; //设置你的网站时区 from -12 to 12 default in UTC+8
 export const siteConfig: SiteConfig = {
-	title: "Mizuki",
-	subtitle: "One demo website",
-	siteURL: "https://mizuki.mysqil.com/", // 请替换为你的站点URL，以斜杠结尾
-	siteStartDate: "2025-01-01", // 站点开始运行日期，用于站点统计组件计算运行天数
+	// core site metadata loaded from src/data/siteConfig.yml
+	title: siteMeta?.title ?? "Mizuki",
+	subtitle: siteMeta?.subtitle ?? "One demo website",
+	siteURL: siteMeta?.siteURL ?? "https://mizuki.mysqil.com/",
+	siteStartDate: siteMeta?.siteStartDate ?? "2025-01-01", // 站点开始运行日期，用于站点统计组件计算运行天数
 
 	timeZone: SITE_TIMEZONE,
 
