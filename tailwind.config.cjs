@@ -9,8 +9,8 @@ module.exports = {
 				sans: ["Roboto", "sans-serif", ...defaultTheme.fontFamily.sans],
 			},
 			screens: {
-				md: "1280px", // 原默认值: 768px, 增大后navbar会更早坍缩
-				lg: "1280px", // 原默认值: 1024px, 保持与md一致以确保统一的响应式行为
+				md: "768px", // 恢复为原默认值：768px，以保持原有导航栏折叠行为
+				lg: "1280px", // 保持 lg 为 1280px
 			},
 		},
 	},
