@@ -107,9 +107,10 @@ if (entry.data.image) {
 	);
 	if (isLocal) {
 		const basePath = getFileDirFromPath(entry.filePath || "");
-		const files = import.meta.glob<ImageMetadata>("../../**", {
-			import: "default",
-		});
+        // Restrict glob to image file extensions to avoid pulling in non-image files (like .yml)
+        const files = import.meta.glob<ImageMetadata>("../../**/*.{png,jpg,jpeg,gif,webp,svg,avif}", {
+            import: "default",
+        });
 		let normalizedPath = path
 			.normalize(path.join("../../", basePath, entry.data.image))
 			.replace(/\\/g, "/");
@@ -131,9 +132,10 @@ if (profileConfig.avatar) {
 		profileConfig.avatar.startsWith("data:")
 	);
 	if (isLocal) {
-		const files = import.meta.glob<ImageMetadata>("../../**", {
-			import: "default",
-		});
+        // Restrict glob to image file extensions to avoid pulling in non-image files (like .yml)
+        const files = import.meta.glob<ImageMetadata>("../../**/*.{png,jpg,jpeg,gif,webp,svg,avif}", {
+            import: "default",
+        });
 		let normalizedPath = path
 			.normalize(path.join("../../", profileConfig.avatar))
 			.replace(/\\/g, "/");
