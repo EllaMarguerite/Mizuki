@@ -15,32 +15,21 @@ collections_config:
     icon: add_notes
     url: /[collection]/[slug]/
     disable_url: false
+    preview:
+      metadata:
+        - text:
+            - key: published
+          icon:
+            - text: calendar_month
     _inputs:
       $.title:
         type: text
         options:
-          icon:
-          empty_type:
           required: true
-          required_message:
-          min_length:
-          min_length_message:
-          max_length:
-          max_length_message:
-          pattern:
-          pattern_message:
-          min_graphemes:
-          min_graphemes_message:
-          max_graphemes:
-          max_graphemes_message:
-          min_words:
-          min_words_message:
-          max_words:
-          max_words_message:
-          locale:
         cascade: true
       $.published:
         type: datetime
+        instance_value: NOW
         cascade: true
       $.tags:
         type: multiselect
@@ -48,25 +37,8 @@ collections_config:
       $.description:
         type: textarea
         options:
-          empty_type:
           show_count: true
           required: true
-          required_message:
-          min_length:
-          min_length_message:
-          max_length:
-          max_length_message:
-          pattern:
-          pattern_message:
-          min_graphemes:
-          min_graphemes_message:
-          max_graphemes:
-          max_graphemes_message:
-          min_words:
-          min_words_message:
-          max_words:
-          max_words_message:
-          locale:
         cascade: true
       $.category:
         type: select
@@ -82,6 +54,12 @@ collections_config:
       $.password:
         type: text
         cascade: true
+      $._uuid:
+        type: text
+        options:
+          required: true
+        instance_value: UUID
+        cascade: true
     disable_add: false
     disable_add_folder: false
     disable_file_actions: false
@@ -92,16 +70,7 @@ collections_config:
         hide_extra_inputs: false
         remove_empty_inputs: false
         remove_extra_inputs: true
-        name:
-        icon:
-        preview:
-        _editables:
-        _enabled_editors:
-        _inputs:
-        _select_data:
-        _structures:
-        create:
-        new_preview_url:
+        create: '[relative_base_path]/{title|slugify}.md'
 commit_templates:
   - template_string: '{message}'
 timezone: Pacific/Auckland
