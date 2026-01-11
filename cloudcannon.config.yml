@@ -4,7 +4,7 @@ paths:
 collections_config:
   pages:
     path: src/pages
-    icon: wysiwyg
+    icon: browse
     url: /[full_slug]/
     disable_url: false
     disable_add: false
@@ -12,12 +12,14 @@ collections_config:
     disable_file_actions: false
   posts:
     path: src/content/posts
-    icon: event_available
+    icon: add_notes
     url: /[collection]/[slug]/
     disable_url: false
     disable_add: false
     disable_add_folder: false
     disable_file_actions: false
+commit_templates:
+  - template_string: '{message}'
 timezone: Pacific/Auckland
 markdown:
   engine: commonmark
@@ -38,5 +40,3 @@ markdown:
     superscript: false
     heading_ids: false
     attributes: false
-commit_templates:
-  - template_string: '{message}'
