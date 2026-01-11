@@ -15,9 +15,93 @@ collections_config:
     icon: add_notes
     url: /[collection]/[slug]/
     disable_url: false
+    _inputs:
+      $.title:
+        type: text
+        options:
+          icon:
+          empty_type:
+          required: true
+          required_message:
+          min_length:
+          min_length_message:
+          max_length:
+          max_length_message:
+          pattern:
+          pattern_message:
+          min_graphemes:
+          min_graphemes_message:
+          max_graphemes:
+          max_graphemes_message:
+          min_words:
+          min_words_message:
+          max_words:
+          max_words_message:
+          locale:
+        cascade: true
+      $.published:
+        type: datetime
+        cascade: true
+      $.tags:
+        type: multiselect
+        cascade: true
+      $.description:
+        type: textarea
+        options:
+          empty_type:
+          show_count: true
+          required: true
+          required_message:
+          min_length:
+          min_length_message:
+          max_length:
+          max_length_message:
+          pattern:
+          pattern_message:
+          min_graphemes:
+          min_graphemes_message:
+          max_graphemes:
+          max_graphemes_message:
+          min_words:
+          min_words_message:
+          max_words:
+          max_words_message:
+          locale:
+        cascade: true
+      $.category:
+        type: select
+        cascade: true
+      $.author:
+        cascade: true
+      $.sourceLink:
+        type: url
+        cascade: true
+      $.draft:
+        type: switch
+        cascade: true
+      $.password:
+        type: text
+        cascade: true
     disable_add: false
     disable_add_folder: false
     disable_file_actions: false
+    schemas:
+      default:
+        path: .cloudcannon/schemas/post.mdx
+        reorder_inputs: true
+        hide_extra_inputs: false
+        remove_empty_inputs: false
+        remove_extra_inputs: true
+        name:
+        icon:
+        preview:
+        _editables:
+        _enabled_editors:
+        _inputs:
+        _select_data:
+        _structures:
+        create:
+        new_preview_url:
 commit_templates:
   - template_string: '{message}'
 timezone: Pacific/Auckland
