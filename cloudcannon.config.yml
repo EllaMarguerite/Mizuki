@@ -71,6 +71,13 @@ collections_config:
         remove_empty_inputs: false
         remove_extra_inputs: true
         create: '[relative_base_path]/{title|slugify}.md'
+  locations:
+    path: src/content/locations
+    icon: mountain_flag
+    disable_url: false
+    disable_add: false
+    disable_add_folder: false
+    disable_file_actions: false
 commit_templates:
   - template_string: '{message}'
 timezone: Pacific/Auckland
