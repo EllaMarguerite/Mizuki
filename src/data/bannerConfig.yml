@@ -48,7 +48,7 @@ homeText:
     # 在主页显示自定义文本
     enable: true
     # 主页横幅主标题
-    title: 美しいミズキ
+    title: Test
     # 主页横幅副标题数组
     subtitle:
         - 特別なことはないけど、君がいると十分です
