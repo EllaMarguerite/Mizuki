@@ -15,7 +15,9 @@ import remarkDirective from "remark-directive";
 import remarkGithubAdmonitionsToDirectives from "remark-github-admonitions-to-directives";
 import remarkMath from "remark-math";
 import remarkSectionize from "remark-sectionize";
-import { siteConfig } from "./src/config.ts";
+import yaml from "@rollup/plugin-yaml";
+import { readFileSync } from "fs";
+import { parse } from "yaml";
 import { pluginCustomCopyButton } from "./src/plugins/expressive-code/custom-copy-button.js";
 import { pluginLanguageBadge } from "./src/plugins/expressive-code/language-badge.ts";
 import { AdmonitionComponent } from "./src/plugins/rehype-component-admonition.mjs";
@@ -27,9 +29,12 @@ import { remarkExcerpt } from "./src/plugins/remark-excerpt.js";
 import { remarkMermaid } from "./src/plugins/remark-mermaid.js";
 import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
 
+// Load site config from YAML
+const siteMeta = parse(readFileSync("./src/data/siteConfig.yml", "utf8"));
+
 // https://astro.build/config
 export default defineConfig({
-	site: siteConfig.siteURL,
+	site: siteMeta.siteURL,
 	base: "/",
 	trailingSlash: "always",
 
@@ -165,6 +170,7 @@ export default defineConfig({
 		],
 	},
 	vite: {
+		plugins: [yaml()],
 		build: {
 			// 静态资源处理优化，防止小图片转 base64 导致 HTML 体积过大（可选，根据需要调整）
 			assetsInlineLimit: 4096,
