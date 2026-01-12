@@ -1,4 +1,7 @@
-// TypeScript site metadata to avoid YAML import issues during SSR/build.
+// Re-export site metadata from YAML file
+// The YAML file is the single source of truth
+import siteMeta from "./siteConfig.yml";
+
 export type SiteMeta = {
 	title: string;
 	subtitle: string;
@@ -6,11 +9,4 @@ export type SiteMeta = {
 	siteStartDate: string; // YYYY-MM-DD or ISO
 };
 
-export const siteMeta: SiteMeta = {
-	title: "Mizuki",
-	subtitle: "One demo website",
-	siteURL: "https://mizuki.mysqil.com/",
-	siteStartDate: "2025-01-01",
-};
-
-export default siteMeta;
+export default siteMeta as SiteMeta;
