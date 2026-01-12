@@ -24,10 +24,10 @@ const SITE_LANG = "en"; // 语言代码，例如：'en', 'zh_CN', 'ja' 等。
 const SITE_TIMEZONE = 8; //设置你的网站时区 from -12 to 12 default in UTC+8
 export const siteConfig: SiteConfig = {
 	// core site metadata loaded from src/data/siteConfig.yml
-	title: siteMeta?.title ?? "Mizuki",
-	subtitle: siteMeta?.subtitle ?? "One demo website",
-	siteURL: siteMeta?.siteURL ?? "https://mizuki.mysqil.com/",
-	siteStartDate: siteMeta?.siteStartDate ?? "2025-01-01", // 站点开始运行日期，用于站点统计组件计算运行天数
+	title: siteMeta?.title,
+	subtitle: siteMeta?.subtitle,
+	siteURL: siteMeta?.siteURL,
+	siteStartDate: siteMeta?.siteStartDate,
 
 	timeZone: SITE_TIMEZONE,
 
