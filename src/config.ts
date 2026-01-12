@@ -15,7 +15,8 @@ import type {
 	SiteConfig,
 } from "./types/config";
 import { LinkPreset } from "./types/config";
-import siteMeta from "./data/siteConfig.yml";
+import siteMeta from "./data/siteConfig";
+import navBarMeta from "./data/navBarConfig";
 
 // 移除i18n导入以避免循环依赖
 
@@ -50,12 +51,10 @@ export const siteConfig: SiteConfig = {
 		devices: true, // 设备页面开关
 	},
 
-	// 顶栏标题配置
+	// 顶栏标题配置 (loaded from src/data/navBarConfig.yml)
 	navbarTitle: {
-		// 顶栏标题文本
-		text: "MizukiUI",
-		// 顶栏标题图标路径，默认使用 public/assets/home/home.png
-		icon: "assets/home/home.png",
+		text: navBarMeta?.text,
+		icon: navBarMeta?.icon,
 	},
 
 	bangumi: {
@@ -655,3 +654,4 @@ export const umamiConfig = {
 <script defer src="XXXX.XXX" data-website-id="ABCD1234"></script>
   `.trim(), // 上面填你要插入的Script,不用再去Layout中插入
 } as const;
+
