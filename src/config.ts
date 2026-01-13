@@ -16,7 +16,6 @@ import type {
 } from "./types/config";
 import { LinkPreset } from "./types/config";
 import siteMeta from "./data/siteConfig";
-import navBarMeta from "./data/navBarConfig";
 import bannerMeta from "./data/bannerConfig";
 import tocMeta from "./data/tocConfig";
 import fullscreenWallpaperMeta from "./data/fullscreenWallpaperConfig";
@@ -43,13 +42,13 @@ export const siteConfig: SiteConfig = {
 		fixed: false, // 对访问者隐藏主题色选择器
 	},
 
-	// 特色页面开关配置 (loaded from src/data/navBarConfig.yml)
-	featurePages: navBarMeta?.featurePages,
+	// 特色页面开关配置 (loaded from src/data/navigationConfig.yml)
+	featurePages: navigationMeta?.featurePages,
 
-	// 顶栏标题配置 (loaded from src/data/navBarConfig.yml)
+	// 顶栏标题配置 (loaded from src/data/navigationConfig.yml)
 	navbarTitle: {
-		text: navBarMeta?.text,
-		icon: navBarMeta?.icon,
+		text: navigationMeta?.text,
+		icon: navigationMeta?.icon,
 	},
 
 	bangumi: {

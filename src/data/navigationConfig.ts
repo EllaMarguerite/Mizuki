@@ -19,6 +19,18 @@ type YamlLink = {
 };
 
 export type NavigationMeta = {
+	text: string;
+	icon: string;
+	featurePages: {
+		anime: boolean;
+		diary: boolean;
+		friends: boolean;
+		projects: boolean;
+		skills: boolean;
+		timeline: boolean;
+		albums: boolean;
+		devices: boolean;
+	};
 	links: YamlLink[];
 };
 
@@ -37,6 +49,9 @@ function convertLinks(yamlLinks: YamlLink[]): (NavBarLink | LinkPreset)[] {
 const rawMeta = navigationMeta as NavigationMeta;
 
 export default {
+	text: rawMeta.text,
+	icon: rawMeta.icon,
+	featurePages: rawMeta.featurePages,
 	links: convertLinks(rawMeta.links),
 };
 

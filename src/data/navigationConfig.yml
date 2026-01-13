@@ -1,3 +1,19 @@
+# 顶栏标题配置
+text: Test
+icon: assets/home/home.png
+
+# 特色页面开关配置(关闭不在使用的页面有助于提升SEO,关闭后直接在顶部导航删除对应的页面就行)
+featurePages:
+    anime: false
+    diary: true
+    friends: true
+    projects: true
+    skills: true
+    timeline: true
+    albums: true
+    devices: true
+
+# 导航链接配置
 links:
     # LinkPreset.Home
     - preset: Home
