@@ -20,6 +20,7 @@ import bannerMeta from "./data/bannerConfig";
 import tocMeta from "./data/tocConfig";
 import fullscreenWallpaperMeta from "./data/fullscreenWallpaperConfig";
 import navigationMeta from "./data/navigationConfig";
+import profileMeta from "./data/profileConfig";
 
 // 移除i18n导入以避免循环依赖
 
@@ -153,41 +154,13 @@ export const navBarConfig: NavBarConfig = {
 	links: navigationMeta?.links,
 };
 
+// 个人资料配置 (loaded from src/data/profileConfig.yml)
 export const profileConfig: ProfileConfig = {
-	avatar: "assets/images/avatar.webp", // 相对于 /src 目录。如果以 '/' 开头，则相对于 /public 目录
-	name: "Matsuzaka Yuki",
-	bio: "The world is big, you have to go and see",
-	typewriter: {
-		enable: true, // 启用个人简介打字机效果
-		speed: 80, // 打字速度（毫秒）
-	},
-	links: [
-		{
-			name: "Bilibli",
-			icon: "fa6-brands:bilibili",
-			url: "https://space.bilibili.com/701864046",
-		},
-		{
-			name: "Gitee",
-			icon: "mdi:git",
-			url: "https://gitee.com/matsuzakayuki",
-		},
-		{
-			name: "GitHub",
-			icon: "fa6-brands:github",
-			url: "https://github.com/matsuzaka-yuki",
-		},
-		{
-			name: "Codeberg",
-			icon: "simple-icons:codeberg",
-			url: "https://codeberg.org",
-		},
-		{
-			name: "Discord",
-			icon: "fa6-brands:discord",
-			url: "https://discord.gg/MqW6TcQtVM",
-		},
-	],
+	avatar: profileMeta?.avatar,
+	name: profileMeta?.name,
+	bio: profileMeta?.bio,
+	typewriter: profileMeta?.typewriter,
+	links: profileMeta?.links,
 };
 
 export const licenseConfig: LicenseConfig = {
