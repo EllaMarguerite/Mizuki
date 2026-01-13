@@ -21,6 +21,8 @@ import tocMeta from "./data/tocConfig";
 import fullscreenWallpaperMeta from "./data/fullscreenWallpaperConfig";
 import navigationMeta from "./data/navigationConfig";
 import profileMeta from "./data/profileConfig";
+import announcementMeta from "./data/announcementConfig";
+import musicPlayerMeta from "./data/musicPlayerConfig";
 
 // 移除i18n导入以避免循环依赖
 
@@ -215,26 +217,22 @@ export const shareConfig: ShareConfig = {
 	enable: true, // 启用分享功能。当设置为 false 时，分享组件将不会显示在文章区域，且不会加载分享组件使用的库
 };
 
+// 公告配置 (loaded from src/data/announcementConfig.yml)
 export const announcementConfig: AnnouncementConfig = {
-	title: "Announcement", // 公告标题
-	content: "Welcome to my blog! This is a sample announcement.", // 公告内容
-	closable: true, // 允许用户关闭公告
-	link: {
-		enable: true, // 启用链接
-		text: "Learn More", // 链接文本
-		url: "/about/", // 链接 URL
-		external: false, // 内部链接
-	},
+	title: announcementMeta?.title,
+	content: announcementMeta?.content,
+	closable: announcementMeta?.closable,
+	link: announcementMeta?.link,
 };
 
+// 音乐播放器配置 (loaded from src/data/musicPlayerConfig.yml)
 export const musicPlayerConfig: MusicPlayerConfig = {
-	enable: true, // 启用音乐播放器功能
-	mode: "meting", // 音乐播放器模式，可选 "local" 或 "meting"
-	meting_api:
-		"https://www.bilibili.uno/api?server=:server&type=:type&id=:id&auth=:auth&r=:r", // Meting API 地址
-	id: "14164869977", // 歌单ID
-	server: "netease", // 音乐源服务器。有的meting的api源支持更多平台,一般来说,netease=网易云音乐, tencent=QQ音乐, kugou=酷狗音乐, xiami=虾米音乐, baidu=百度音乐
-	type: "playlist", // 播单类型
+	enable: musicPlayerMeta?.enable,
+	mode: musicPlayerMeta?.mode,
+	meting_api: musicPlayerMeta?.meting_api,
+	id: musicPlayerMeta?.id,
+	server: musicPlayerMeta?.server,
+	type: musicPlayerMeta?.type,
 };
 
 export const footerConfig: FooterConfig = {
