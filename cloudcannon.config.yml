@@ -78,9 +78,16 @@ collections_config:
     disable_add: false
     disable_add_folder: false
     disable_file_actions: false
+  data:
+    path: src/data
+    icon: data_usage
+    disable_url: true
+    disable_add: false
+    disable_add_folder: false
+    disable_file_actions: false
+timezone: Pacific/Auckland
 commit_templates:
   - template_string: '{message}'
-timezone: Pacific/Auckland
 markdown:
   engine: commonmark
   options:

@@ -1,0 +1,19 @@
+# 公告标题
+title: Announcement
+
+# 公告内容
+content: Welcome to my blog! This is a sample announcement.
+
+# 允许用户关闭公告
+closable: true
+
+link:
+    # 启用链接
+    enable: true
+    # 链接文本
+    text: Learn More
+    # 链接 URL
+    url: /about/
+    # 内部链接
+    external: false
+

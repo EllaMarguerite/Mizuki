@@ -1,0 +1,33 @@
+# 相对于 /src 目录。如果以 '/' 开头，则相对于 /public 目录
+avatar: assets/images/avatar.webp
+
+# 名称
+name: Matsuzaka Yuki
+
+# 个人简介
+bio: The world is big, you have to go and see
+
+typewriter:
+    # 启用个人简介打字机效果
+    enable: true
+    # 打字速度（毫秒）
+    speed: 80
+
+# 社交链接
+links:
+    - name: Bilibli
+      icon: fa6-brands:bilibili
+      url: https://space.bilibili.com/701864046
+    - name: Gitee
+      icon: mdi:git
+      url: https://gitee.com/matsuzakayuki
+    - name: GitHub
+      icon: fa6-brands:github
+      url: https://github.com/matsuzaka-yuki
+    - name: Codeberg
+      icon: simple-icons:codeberg
+      url: https://codeberg.org
+    - name: Discord
+      icon: fa6-brands:discord
+      url: https://discord.gg/MqW6TcQtVM
+
