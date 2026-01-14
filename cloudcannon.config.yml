@@ -20,6 +20,34 @@ collections_config:
     path: src/data
     icon: data_usage
     disable_url: true
+    _inputs:
+      $.title:
+        type: text
+        options:
+          icon:
+          empty_type:
+          required: true
+          required_message:
+          min_length:
+          min_length_message:
+          max_length:
+          max_length_message:
+          pattern:
+          pattern_message:
+          min_graphemes:
+          min_graphemes_message:
+          max_graphemes:
+          max_graphemes_message:
+          min_words:
+          min_words_message:
+          max_words:
+          max_words_message:
+          locale:
+        comment: Add a title for the announcement box.
+        cascade: true
+      $.content:
+        type: markdown
+        cascade: true
     disable_add: false
     disable_add_folder: false
     disable_file_actions: false
