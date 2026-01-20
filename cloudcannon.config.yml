@@ -5,6 +5,7 @@ collections_config:
   pages:
     path: src/pages
     icon: wysiwyg
+    url: /[full_slug]/
     disable_url: false
     disable_add: false
     disable_add_folder: false
@@ -20,6 +21,38 @@ collections_config:
     path: src/data
     icon: data_usage
     disable_url: true
+    _inputs:
+      $.title:
+        type: text
+        options:
+          required: true
+        comment: Add a title for the announcement box.
+        cascade: true
+      $.content:
+        type: textarea
+        options:
+          show_count: true
+          required: true
+        cascade: true
+      $.closable:
+        type: switch
+        comment: Can this announement be closed?
+        cascade: true
+      $.link.enable:
+        type: switch
+        cascade: true
+      $.link:
+        type: object
+        comment: Add a button to the announcement.
+        cascade: true
+      $.link.text:
+        type: text
+        comment: Define the button text.
+        cascade: true
+      $.link.url:
+        type: url
+        comment: Define the button URL.
+        cascade: true
     disable_add: false
     disable_add_folder: false
     disable_file_actions: false
